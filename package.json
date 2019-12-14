@@ -1,0 +1,28 @@
+{
+  "name": "notetaker",
+  "version": "1.0.0",
+  "description": "notetaker app",
+  "main": "server.js",
+  "dependencies": {
+    "bash": "0.0.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marksirany/notetaker.git"
+  },
+  "keywords": [
+    "notetaker"
+  ],
+  "author": "mark sirany",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marksirany/notetaker/issues"
+  },
+  "homepage": "https://github.com/marksirany/notetaker#readme"
+}

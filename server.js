@@ -13,13 +13,13 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-//start notes at 0//
-let noteIdMaker = 0;
+// * Create a few array variables that will hold the data
+const note = [];
 
 //----------------------------------------------------------------------------//
 
 
-// * Create a set of routes for getting and posting data//
+// I. Create a set of routes for getting and posting data//
 
 //1. return note.html file//
 app.get("/notes", function (req, res) {
@@ -40,6 +40,7 @@ app.get("/", function (req, res) {
 
 //---------------------------------------------------------------------------//
 
+//II. The following API routes should be created:
 //1. GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.//
 
 app.get("/api/notes", function(req, res){
@@ -56,8 +57,16 @@ app.get("/api/notes", function(req, res){
 
 
 //2. POST `/api/notes` - Should recieve a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.//
-
-
+app.post("/api/notes", function(req, res){
+    
+    if(newNote){
+        const newNote = req.body;
+        newNote.type = "note";
+        console.log(newNote);
+        note.push(newNote);
+        res.json(newNote);
+    } 
+});
 
 //3. DELETE `/api/notes/:id` - Should recieve a query paramter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.//
 
@@ -68,6 +77,6 @@ app.get("/api/notes", function(req, res){
 
 
 // Starts the server to begin listening//
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });

@@ -25,7 +25,7 @@ app.get("/notes", function (req, res) {
 });
 
 //2. return the index.html file//
-app.get("/", function (req, res) {
+app.get("/index", function (req, res) {
     res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 

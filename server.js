@@ -21,12 +21,12 @@ let noteCreate = 0;
 
 //1. return note.html file//
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/notes.html"));
+    res.sendFile(path.join(__dirname, "/Develop/public/notes.html"));
 });
 
 //2. return the index.html file//
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+    res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 
 //---------------------------------------------------------------------------//
@@ -62,15 +62,15 @@ app.post("/api/notes", function (req, res) {
     if (newNote) {
         console.log(`New note detected: ${newNote}`);
         // gets the data from db.json
-        fs.readFile("Develop/db/db.json", "utf8", function (err, newNotesString) {
+        fs.readFile("Develop/db/db.json", "utf8", function (err, notesString) {
             if (err) {
                 console.log(`Error occurred during readfile: ${err}`);
                 return;
             }
-            console.log(`Current Notes: ${newNotesString}`);
+            console.log(`Current Notes: ${notesString}`);
             // If notes already exist, this will be used to add to the current notes.
-            if (newNotesString) {
-                const notes = JSON.parse(newNotesString);
+            if (notesString) {
+                const notes = JSON.parse(notesString);
                 console.log(`Added to already existing note`);
 
                 const combinedNotes = [...notes, newNote];
